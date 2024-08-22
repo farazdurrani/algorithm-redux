@@ -1,0 +1,38 @@
+Huffman Code
+
+Notes:
+
+The goal is to represent data in code. In other words,
+find that CODE that can represent this compressed data.
+
+We can generate this code by using Huffman Code Algorithm.
+
+The code generated is always unique for each character.
+
+The code generated will be variable-length code where
+characters that occur the most are represented by 
+shorter code and vice versa.
+
+Once the code is created, we can concatenate the characters 
+by using an arbitrary 'marker'.
+
+
+Pseudo-code
+
+Huffman(C) //C = characters
+1 n = C.length
+2 build a min-heap Q of chars in C by frequency of those chars
+3 for (int i = 0 to n - 1) //don't exhaust all chars (go up to n-1)
+4    z = new TreeNode
+5    z.left = extractMin(Q)
+6    z.right = extractMin(Q)
+7    z.freq = z.left.freq + z.right.freq
+8    insert this z back into min-heap Q
+9 return extractMin(Q)
+
+
+Full Binary Tree (It's not a Binary Search Tree). It's a Full Binary Tree
+where each nonleaf node has both children. leaves represent characters. 
+
+When traversing, left edge means 0, and right edge means 1.
+

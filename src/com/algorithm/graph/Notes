@@ -1,0 +1,11 @@
+When finding shortest paths, there cannot be negative-weight cycles. 
+
+* Use Bellman-Ford if there are regular cycles and contains 
+negative weights (this is different than negative-weight cycles.
+
+* Use DAG-Shortest-Path if it's a DAG (directed "ACYCLIC" graph) and could
+contains negative weights.
+
+* Use Dijkstra if there are regular cycles but no negative weights.
+
+Only Dijstra is greedy. 

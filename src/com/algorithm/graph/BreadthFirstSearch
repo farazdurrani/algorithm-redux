@@ -1,0 +1,37 @@
+BreadthFirstSearch
+
+
+BFS(G, s)
+
+for each u in G except s
+  u.color = white
+  u.parent = nil
+  u.distance = -infinity
+  
+s.color = GRAY
+s.distance = 0
+s.parent = nil
+
+ENQUEUE(s)
+
+while(Q is not empty)
+    u = DEQUEUE();
+    for each v in Adj|u|
+        if(v.color == WHITE)
+        	v.color = GRAY
+        	v.distance = u.distance + 1
+        	v.parent = u
+        	ENQUEUE(v)
+    u.color = BLACK    	
+    
+PRINT_PATH(s,v)
+
+if v == s
+   print s
+else if v.parent == NIL
+   print v has no way to the source
+else 
+   PRINT_PATH(s, v.parent)
+   print v       
+   
+    
