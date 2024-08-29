@@ -3,7 +3,7 @@ package com.algorithm.graph.bfs;
 import java.util.List;
 import java.util.Map;
 
-import com.algorithm.dynamiclist.one.Queue;
+import com.algorithm.dynamiclist.seventeen.doublelinkedlist.QueueDoublyLinked;
 import com.algorithm.graph.Color;
 import com.algorithm.graph.Vertex;
 
@@ -62,7 +62,7 @@ public class BreadthFirstSearch {
 
 		// Queue will always have gray items. ALWAYS.
 
-		Queue<Vertex> q = new Queue<>();
+		QueueDoublyLinked<Vertex> q = new QueueDoublyLinked<>();
 		q.enqueue(s);
 
 		while (!q.isEmpty()) {

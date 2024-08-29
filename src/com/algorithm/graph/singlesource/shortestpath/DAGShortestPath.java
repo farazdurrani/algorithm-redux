@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.algorithm.dynamiclist.one.Stack;
+import com.algorithm.dynamiclist.seventeen.doublelinkedlist.StackDoublyLinked;
 import com.algorithm.graph.Color;
 import com.algorithm.graph.Edge;
 import com.algorithm.graph.Vertex;
@@ -73,7 +73,7 @@ public class DAGShortestPath {
 
 	private static void DAG_SHORTEST_PATH(Map<Vertex, List<Edge>> graph,
 			Vertex source) {
-		Stack<Vertex> stack = topologicalSort(graph);
+		StackDoublyLinked<Vertex> stack = topologicalSort(graph);
 		// initializing step
 		for (Vertex u : graph.keySet()) {
 			u.p = null;
@@ -82,7 +82,7 @@ public class DAGShortestPath {
 		source.d = 0;
 		// initializing complete
 		while (!stack.isEmpty()) {
-			Vertex u = stack.pull();
+			Vertex u = stack.pop();
 			System.out.print(u.label + " - ");
 			for (Edge e : graph.get(u)) {
 				Vertex v = e.destination;
@@ -97,12 +97,12 @@ public class DAGShortestPath {
 
 	static int TIME;
 
-	private static Stack<Vertex> topologicalSort(
+	private static StackDoublyLinked<Vertex> topologicalSort(
 			Map<Vertex, List<Edge>> graph) {
 		return DFS(graph);
 	}
 
-	private static Stack<Vertex> DFS(Map<Vertex, List<Edge>> graph) {
+	private static StackDoublyLinked<Vertex> DFS(Map<Vertex, List<Edge>> graph) {
 
 		// initializing step
 		for (Vertex u : graph.keySet()) {
@@ -110,7 +110,7 @@ public class DAGShortestPath {
 			u.c = Color.WHITE;
 		}
 		TIME = 0;
-		Stack<Vertex> stack = new Stack<>();
+		StackDoublyLinked<Vertex> stack = new StackDoublyLinked<>();
 
 		for (Vertex u : graph.keySet()) {
 			if (u.c == Color.WHITE) {
@@ -121,7 +121,7 @@ public class DAGShortestPath {
 		return stack;
 	}
 
-	private static void DFS_VISIT(Vertex u, Stack<Vertex> stack,
+	private static void DFS_VISIT(Vertex u, StackDoublyLinked<Vertex> stack,
 			Map<Vertex, List<Edge>> graph) {
 		TIME = TIME + 1;
 		u.d = TIME;

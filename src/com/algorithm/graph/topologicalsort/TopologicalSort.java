@@ -3,7 +3,7 @@ package com.algorithm.graph.topologicalsort;
 import java.util.List;
 import java.util.Map;
 
-import com.algorithm.dynamiclist.one.Stack;
+import com.algorithm.dynamiclist.seventeen.doublelinkedlist.StackDoublyLinked;
 import com.algorithm.graph.Color;
 import com.algorithm.graph.Vertex;
 
@@ -20,18 +20,18 @@ public class TopologicalSort {
 	}
 
 	public static void topologicalSort(Map<Vertex, List<Vertex>> graph) {
-		Stack<Vertex> s = new Stack<>(); // contains vertices in order of
+		StackDoublyLinked<Vertex> s = new StackDoublyLinked<>(); // contains vertices in order of
 											// decreasing u.f
 		DFS(graph, s);
 		System.out.println("Topological Sort");
 		while (!s.isEmpty()) {
-			Vertex vertex = s.pull();
+			Vertex vertex = s.pop();
 			System.out.println(
 					vertex.label + "-" + vertex.d + "/" + vertex.f + "  ");
 		}
 	}
 
-	public static void DFS(Map<Vertex, List<Vertex>> graph, Stack<Vertex> s) {
+	public static void DFS(Map<Vertex, List<Vertex>> graph, StackDoublyLinked<Vertex> s) {
 		for (Vertex u : graph.keySet()) {
 			u.c = Color.WHITE;
 			u.p = null; // symbolically
@@ -45,7 +45,7 @@ public class TopologicalSort {
 	}
 
 	private static void DFS_VISIT(Map<Vertex, List<Vertex>> graph, Vertex u,
-			Stack<Vertex> s) {
+								  StackDoublyLinked<Vertex> s) {
 		TIME = TIME + 1;
 		u.d = TIME;
 		u.c = Color.GRAY;
