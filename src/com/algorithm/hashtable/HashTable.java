@@ -2,7 +2,7 @@ package com.algorithm.hashtable;
 
 import java.util.Random;
 
-import com.algorithm.dynamiclist.twelve.doublelinkedlist.DoubleLinkedList;
+import com.algorithm.dynamiclist.seventeen.doublelinkedlist.DoubleLinkedList;
 
 //https://www.youtube.com/watch?v=KyUTuwz_b7Q
 public class HashTable {
@@ -44,7 +44,7 @@ public class HashTable {
 
 	private void delete(String key) {
 		int index = hash(key) % store.length;
-		if (key != null && store[index].remove(key)) {
+		if (key != null && store[index].delete(key)) {
 			System.out.println("Deleted " + key);
 		} else {
 			System.out.println(key + " not found");
