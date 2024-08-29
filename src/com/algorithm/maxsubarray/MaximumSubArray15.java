@@ -18,6 +18,7 @@ public class MaximumSubArray15 {
 		System.out.println("Maxisum Sub Array Divide-&-Conquere: ");
 		print(max);
 		int max2[] = msabf();
+		System.out.println("Maxisum Sub Array Brute Force: ");
 		print(max2);
 	}
 
