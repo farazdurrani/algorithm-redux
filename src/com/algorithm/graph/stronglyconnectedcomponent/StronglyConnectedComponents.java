@@ -3,7 +3,7 @@ package com.algorithm.graph.stronglyconnectedcomponent;
 import java.util.List;
 import java.util.Map;
 
-import com.algorithm.dynamiclist.ten.Stack;
+import com.algorithm.dynamiclist.one.Stack;
 import com.algorithm.graph.Color;
 import com.algorithm.graph.Vertex;
 import com.algorithm.graph.transpose.Transpose;
@@ -90,7 +90,7 @@ public class StronglyConnectedComponents {
 		}
 
 		while (!s.isEmpty()) {
-			Vertex u = s.pop();
+			Vertex u = s.pull();
 			if (u.c == Color.WHITE) {
 				System.out.print(u.label + " ");
 				DFS_VISIT(u, graphT);

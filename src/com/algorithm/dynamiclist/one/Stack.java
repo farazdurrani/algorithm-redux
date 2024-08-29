@@ -23,4 +23,8 @@ public class Stack<E> {
     public void print() {
 	node.print();
     }
+
+    public boolean isEmpty() {
+        return node.isEmpty();
+    }
 }

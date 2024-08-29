@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.algorithm.dynamiclist.ten.Stack;
+import com.algorithm.dynamiclist.one.Stack;
 import com.algorithm.graph.Color;
 import com.algorithm.graph.Edge;
 import com.algorithm.graph.Vertex;
@@ -82,7 +82,7 @@ public class DAGShortestPath {
 		source.d = 0;
 		// initializing complete
 		while (!stack.isEmpty()) {
-			Vertex u = stack.pop();
+			Vertex u = stack.pull();
 			System.out.print(u.label + " - ");
 			for (Edge e : graph.get(u)) {
 				Vertex v = e.destination;

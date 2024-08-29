@@ -3,7 +3,7 @@ package com.algorithm.graph.cycles;
 import java.util.List;
 import java.util.Map;
 
-import com.algorithm.dynamiclist.ten.Stack;
+import com.algorithm.dynamiclist.one.Stack;
 import com.algorithm.graph.Color;
 import com.algorithm.graph.Vertex;
 import com.algorithm.graph.stronglyconnectedcomponent.StronglyConnectedComponents;
@@ -85,7 +85,7 @@ public class FindCycles {
 				Stack<Vertex> stack = new Stack<>();
 				if (DFS_DETECT_CYCLES_UNDIRECTED(graph, u, stack)) {
 					System.out.println("Found Cycle!");
-					Vertex last = stack.pop();
+					Vertex last = stack.pull();
 					String label = last.label;
 					while (last != null) {
 						System.out.print(last.label + " ");
