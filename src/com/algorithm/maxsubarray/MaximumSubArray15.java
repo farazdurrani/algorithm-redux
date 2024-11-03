@@ -80,5 +80,4 @@ public class MaximumSubArray15 {
 		}
 		return new int[] { leftMaxIndex, rightMaxIndex, left_max + right_max };
 	}
-
 }
