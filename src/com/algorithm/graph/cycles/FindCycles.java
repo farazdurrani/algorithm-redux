@@ -3,7 +3,7 @@ package com.algorithm.graph.cycles;
 import java.util.List;
 import java.util.Map;
 
-import com.algorithm.dynamiclist.seventeen.doublelinkedlist.StackDoublyLinked;
+import com.algorithm.dynamiclist.seventeen.doublelinkedlist.Stack;
 import com.algorithm.graph.Color;
 import com.algorithm.graph.Vertex;
 import com.algorithm.graph.stronglyconnectedcomponent.StronglyConnectedComponents;
@@ -82,7 +82,7 @@ public class FindCycles {
 
 		for (Vertex u : graph.keySet()) {
 			if (u.c == Color.WHITE) {
-				StackDoublyLinked<Vertex> stack = new StackDoublyLinked<>();
+				Stack<Vertex> stack = new Stack<>();
 				if (DFS_DETECT_CYCLES_UNDIRECTED(graph, u, stack)) {
 					System.out.println("Found Cycle!");
 					Vertex last = stack.pop();
@@ -105,7 +105,7 @@ public class FindCycles {
 	}
 
 	private static boolean DFS_DETECT_CYCLES_UNDIRECTED(
-			Map<Vertex, List<Vertex>> graph, Vertex u, StackDoublyLinked<Vertex> stack) {
+			Map<Vertex, List<Vertex>> graph, Vertex u, Stack<Vertex> stack) {
 		u.c = Color.BLACK;
 		for (Vertex v : graph.get(u)) {
 			if (v.c == Color.BLACK && v != u.p) {

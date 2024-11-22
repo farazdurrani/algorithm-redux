@@ -3,7 +3,7 @@ package com.algorithm.graph.stronglyconnectedcomponent;
 import java.util.List;
 import java.util.Map;
 
-import com.algorithm.dynamiclist.seventeen.doublelinkedlist.StackDoublyLinked;
+import com.algorithm.dynamiclist.seventeen.doublelinkedlist.Stack;
 import com.algorithm.graph.Color;
 import com.algorithm.graph.Vertex;
 import com.algorithm.graph.transpose.Transpose;
@@ -43,13 +43,13 @@ public class StronglyConnectedComponents {
 	public static void stronglyConnectedComponents(
 			Map<Vertex, List<Vertex>> graph) {
 		// stack contains vertices in order of decreasing u.f
-		StackDoublyLinked<Vertex> s = new StackDoublyLinked<>();
+		Stack<Vertex> s = new Stack<>();
 		DFS(graph, s);
 		Map<Vertex, List<Vertex>> graphT = Transpose.transpose(graph);
 		DFS_MODIFIED(graphT, s);
 	}
 
-	private static void DFS(Map<Vertex, List<Vertex>> graph, StackDoublyLinked<Vertex> s) {
+	private static void DFS(Map<Vertex, List<Vertex>> graph, Stack<Vertex> s) {
 		for (Vertex u : graph.keySet()) {
 			u.c = Color.WHITE;
 			u.p = null; // symbolically
@@ -63,7 +63,7 @@ public class StronglyConnectedComponents {
 	}
 
 	private static void DFS_VISIT(Map<Vertex, List<Vertex>> graph, Vertex u,
-								  StackDoublyLinked<Vertex> s) {
+								  Stack<Vertex> s) {
 		TIME = TIME + 1;
 		u.d = TIME;
 		u.c = Color.GRAY;
@@ -83,7 +83,7 @@ public class StronglyConnectedComponents {
 	 * This is a modified version of Depth First Search
 	 */
 	private static void DFS_MODIFIED(Map<Vertex, List<Vertex>> graphT,
-									 StackDoublyLinked<Vertex> s) {
+									 Stack<Vertex> s) {
 		for (Vertex u : graphT.keySet()) {
 			u.p = null;
 			u.c = Color.WHITE;

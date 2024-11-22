@@ -1,5 +1,4 @@
-package com.algorithm.tree.twentytwo;
-
+package com.algorithm.tree.binarysearchtree;
 
 import java.util.ArrayList;
 import java.util.Collections;

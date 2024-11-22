@@ -1,4 +1,4 @@
-package com.algorithm.tree.twentytwo;
+package com.algorithm.tree.redblacktree;
 
 import java.util.List;
 

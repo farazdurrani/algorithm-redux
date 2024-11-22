@@ -1,7 +1,7 @@
-package com.algorithm.tree.twentytwo;
+package com.algorithm.tree.redblacktree;
 
-import com.algorithm.dynamiclist.seventeen.doublelinkedlist.QueueDoublyLinked;
-import com.algorithm.dynamiclist.seventeen.doublelinkedlist.StackDoublyLinked;
+import com.algorithm.dynamiclist.seventeen.doublelinkedlist.Queue;
+import com.algorithm.dynamiclist.seventeen.doublelinkedlist.Stack;
 
 @SuppressWarnings({ "rawtypes", "static-access", "unchecked" })
 public class RedBlackTree<E extends Comparable<E>> {
@@ -318,7 +318,7 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	public void levelOrderTraversalQueue() {
-		QueueDoublyLinked<TreeNode<E>> q = new QueueDoublyLinked<>();
+		Queue<TreeNode<E>> q = new Queue<>();
 		q.enqueue(root);
 		while (!q.isEmpty()) {
 			TreeNode<E> node = q.dequeue();
@@ -364,7 +364,7 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 	
 	public void inorderTraversalIterative() {
-		StackDoublyLinked<TreeNode<E>> s = new StackDoublyLinked<>();
+		Stack<TreeNode<E>> s = new Stack<>();
 		TreeNode<E> curr = root;
 		while (curr != nil || !s.isEmpty()) {
 			while (curr != nil) {
@@ -379,7 +379,7 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	public void preorderTraversalIterative() {
-		StackDoublyLinked<TreeNode<E>> s = new StackDoublyLinked<>();
+		Stack<TreeNode<E>> s = new Stack<>();
 		s.push(root);
 		while (!s.isEmpty()) {
 			TreeNode<E> node = s.pop();
@@ -395,8 +395,8 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	public void postorderTraversalIterative() {
-		StackDoublyLinked<TreeNode<E>> s1 = new StackDoublyLinked<>();
-		StackDoublyLinked<TreeNode<E>> s2 = new StackDoublyLinked<>();
+		Stack<TreeNode<E>> s1 = new Stack<>();
+		Stack<TreeNode<E>> s2 = new Stack<>();
 		s1.push(root);
 		while (!s1.isEmpty()) {
 			TreeNode<E> node = s1.pop();

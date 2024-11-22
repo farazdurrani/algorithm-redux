@@ -1,4 +1,4 @@
-package com.algorithm.tree.twentytwo;
+package com.algorithm.tree.redblacktree;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class TreeNode<E extends Comparable<E>> implements Comparable<TreeNode<E>> {

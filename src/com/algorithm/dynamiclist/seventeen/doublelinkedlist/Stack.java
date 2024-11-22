@@ -1,6 +1,6 @@
 package com.algorithm.dynamiclist.seventeen.doublelinkedlist;
 
-public class StackDoublyLinked<E extends Comparable<E>> {
+public class Stack<E extends Comparable<E>> {
 
     private DoubleLinkedList<E> list = new DoubleLinkedList<>("Stack");
 

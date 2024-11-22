@@ -1,6 +1,6 @@
 package com.algorithm.dynamiclist.seventeen.doublelinkedlist;
 
-public class QueueDoublyLinked<E extends Comparable<E>> {
+public class Queue<E extends Comparable<E>> {
 
     private DoubleLinkedList<E> list = new DoubleLinkedList<>("Queue");
 
@@ -20,4 +20,7 @@ public class QueueDoublyLinked<E extends Comparable<E>> {
 	return list.isEmpty();
     }
 
+  public int size() {
+      return list.size();
+  }
 }
