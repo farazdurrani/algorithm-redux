@@ -1,5 +1,6 @@
 package com.algorithm.hashtable;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import com.algorithm.dynamiclist.seventeen.doublelinkedlist.DoubleLinkedList;
@@ -12,34 +13,12 @@ public class HashTable {
 
 	public static void main(String[] args) {
 		String strings[] = generateRandomStrings(20);
-
 		HashTable hashTable = new HashTable();
-		for (String string : strings) {
-			hashTable.insert(string);
-		}
-
+		Arrays.stream(strings).forEach(hashTable::insert);
 		hashTable.print();
-
 		String deleteKey = null;
-
 		hashTable.delete(deleteKey);
-
 		hashTable.print();
-
-	}
-
-	private void print() {
-		System.out.println("Printing Hash Table");
-		int i = 0;
-		while (i < store.length) {
-			System.out.print("At position " + i + " -> ");
-			if (store[i] == null) {
-				System.out.println("Bucket at index " + i + " is empty");
-			} else {
-				store[i].printFromFront();
-			}
-			i++;
-		}
 	}
 
 	private void delete(String key) {
@@ -67,6 +46,20 @@ public class HashTable {
 			}
 		}
 		return hash;
+	}
+
+	private void print() {
+		System.out.println("Printing Hash Table");
+		int i = 0;
+		while (i < store.length) {
+			System.out.print("At position " + i + " -> ");
+			if (store[i] == null) {
+				System.out.println("Bucket at index " + i + " is empty");
+			} else {
+				store[i].printFromFront();
+			}
+			i++;
+		}
 	}
 
 	private static String[] generateRandomStrings(int number) {
