@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class CutRod7 {
 
 	public static void main(String[] args) {
-		int[] p = { 0, 1, 5, 8, 9, 10, 17, 17, 20, 23, 30 };
+		int[] p = { 0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30 };
 		int n = 4;
 		System.out.println("Cut Rod Naive: " + cutRod(p, n));
 		// dynamic programming
@@ -19,13 +19,11 @@ public class CutRod7 {
 		printCutRodSolution(p, n);
 		n = 7;
 		printCutRodSolution(p, n);
-
 	}
 
 	private static void printCutRodSolution(int[] p, int n) {
 		int rs[][] = extendedBottomUpCutRod(p, n);
 		int s[] = rs[1];
-
 		while( n > 0) {
 			System.out.print(s[n] + " ");
 			n = n - s[n];

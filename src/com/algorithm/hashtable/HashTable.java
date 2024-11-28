@@ -1,6 +1,7 @@
 package com.algorithm.hashtable;
 
 import java.util.Arrays;
+import java.util.Hashtable;
 import java.util.Random;
 
 import com.algorithm.dynamiclist.seventeen.doublelinkedlist.DoubleLinkedList;
