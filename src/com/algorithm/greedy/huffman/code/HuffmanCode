@@ -1,25 +1,12 @@
-Huffman Code
+Huffman Code:
 
-Notes:
+The goal is to represent data in code. In other words, find that CODE that can represent this compressed data.
+We can generate this code by using Huffman Code Algorithm. The code generated is always unique for each
+character. The code generated will be variable-length code where characters that occur the most are
+represented by shorter code and vice versa.
 
-The goal is to represent data in code. In other words,
-find that CODE that can represent this compressed data.
-
-We can generate this code by using Huffman Code Algorithm.
-
-The code generated is always unique for each character.
-
-The code generated will be variable-length code where
-characters that occur the most are represented by 
-shorter code and vice versa.
-
-Once the code is created, we can concatenate the characters 
-by using an arbitrary 'marker'.
-
-
-Pseudo-code
-
-Huffman(C) //C = characters
+Pseudo-code:
+huffman_encode(C) //C = characters
 1 n = C.length
 2 build a min-heap Q of chars in C by frequency of those chars
 3 for (int i = 0 to n - 1) //don't exhaust all chars (go up to n-1)
@@ -30,9 +17,30 @@ Huffman(C) //C = characters
 8    insert this z back into min-heap Q
 9 return extractMin(Q)
 
+Why is this a greedy choice? It's because of merging together two characters of lowest frequency in each step.
 
-Full Binary Tree (It's not a Binary Search Tree). It's a Full Binary Tree
-where each nonleaf node has both children. leaves represent characters. 
+It's not a Binary Search Tree. It's a Full Binary Tree where each non-leaf node has both children. leaves represent characters.
 
 When traversing, left edge means 0, and right edge means 1.
 
+Traversal code:
+How to stitch together the original word by decoding the "code" spitted out by the huffman_encode function?
+huffman_decode("0110101")
+// You're given an encoded string that you need to decode.
+1 get hold of the root and copy it to a temp variable.
+2 use a for-loop to iterate over each char in the string. Use index-based for-loop.
+3     if current index is 0, temp node = temp.left. Else, temp = temp.right.
+4      if temp has no left and right children, you have reached a lead node a.k.a the char that's encoded.
+          print temp.data
+          reset temp to root.
+Sample code:
+public String decode(String code) {
+    Node temp = root;
+    for (int i = 0; i < code.length(); i++) {
+        temp = code.charAt(i) == '1' ? temp.right : temp.left;
+        if (temp.left == null && temp.right == null) {
+            print temp.data;
+            temp = root;
+        }
+    }
+}

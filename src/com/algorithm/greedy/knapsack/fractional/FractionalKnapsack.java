@@ -8,7 +8,7 @@ public class FractionalKnapsack {
 		int[] p = { 100, 280, 120, 120 }; //sorted already by Pi / Wi
 		int W = 60;
 
-		double ratios[] = fractionalKnapsackGreedy(w, p, W);
+		double[] ratios = fractionalKnapsackGreedy(w, W);
 
 		double maxProfit = maxProfit(ratios, p);
 
@@ -28,7 +28,7 @@ public class FractionalKnapsack {
 	}
 
 	// it assumes that weight and profit are in descending order
-	public static double[] fractionalKnapsackGreedy(int[] w, int[] p, int W) {
+	public static double[] fractionalKnapsackGreedy(int[] w, int W) {
 
 		double[] ratios = new double[w.length];
 
@@ -41,8 +41,7 @@ public class FractionalKnapsack {
 			} else {
 				double ratio = (double) (W - weight) / w[i];
 				ratios[i] = ratio;
-				weight = W;
-				break;
+        break;
 			}
 		}
 		return ratios;
