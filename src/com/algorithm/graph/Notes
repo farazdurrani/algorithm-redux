@@ -8,4 +8,20 @@ contains negative weights.
 
 * Use Dijkstra if there are regular cycles but no negative weights.
 
-Only Dijstra is greedy. 
+Only Dijkstra is greedy.
+
+============new===============
+Prim's algo is for non-directed weighted graphs.
+
+breadth-first-search algorithm is a shortest-paths algorithm that works on unweighted graphs.
+
+shortest-paths problems are for acyclic directed weighted graphs. (cannot contain -ve or +ve cycles at all).
+However, shortest-paths graphs can contain negative weights (just weights, no cycles).
+
+Dijkstra’s algorithm assumes that all edge weights in the input graph are non-negative.
+Bellman-Ford algorithm allows negative-weight edges in the input graph.
+
+Dijkstra, DAG, and Bellman-Ford algorithms calls INITIALIZE-SINGLE-SOURCE exactly once.
+But Bellman-Ford repeatedly relaxes edges. Relaxation is the only means by which
+shortest-path estimates and predecessors change. Dijkstra and the DAG relax
+each edge exactly once.
