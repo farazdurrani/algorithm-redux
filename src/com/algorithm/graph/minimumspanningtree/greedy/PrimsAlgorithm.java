@@ -55,8 +55,8 @@ public class PrimsAlgorithm {
       System.out.print(u.label + " ");
       for (Vertex v : graph.get(u)) {
         Key key = new Key(u.label, v.label);
-        int wu_v = weights.get(key);
-        if (q.contains(v) && v.key > wu_v) {
+        int w_uv = weights.get(key);
+        if (q.contains(v) && v.key > w_uv) {
           // Update: There's no way original min-priority-queue would ever expose decrease key to the outside world.
           // Even if we did, we would not know the index to it. And if we were to find that out, which is easy to
           // figure out no doubt, the performance of it would be worse than just deleting and adding it back.
@@ -67,7 +67,7 @@ public class PrimsAlgorithm {
           // it back with the new decreased value. It does maintain the min-heap property.
           q.remove(v);
           v.p = u;
-          v.key = wu_v;
+          v.key = w_uv;
           q.add(v);
         }
       }

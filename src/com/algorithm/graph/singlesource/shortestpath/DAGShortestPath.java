@@ -84,9 +84,10 @@ public class DAGShortestPath {
       System.out.print(u.label + " - ");
       for (Edge e : graph.get(u)) {
         Vertex v = e.destination;
+        int w_uv = e.weight;
         // relax edge
-        if (v.d > u.d + e.weight) {
-          v.d = u.d + e.weight;
+        if (v.d > u.d + w_uv) {
+          v.d = u.d + w_uv;
           v.p = u;
         }
       }

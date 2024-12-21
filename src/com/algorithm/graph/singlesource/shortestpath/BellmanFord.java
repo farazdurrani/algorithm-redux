@@ -63,7 +63,8 @@ public class BellmanFord {
     for (Edge edge : edges) {
       Vertex u = edge.source;
       Vertex v = edge.destination;
-      if (v.d > u.d + edge.weight) {
+      int w_uv = edge.weight;
+      if (v.d > u.d + w_uv) {
         // cycle detected
         return false;
       }
@@ -74,9 +75,9 @@ public class BellmanFord {
   private static void relax(Edge edge) {
     Vertex u = edge.source;
     Vertex v = edge.destination;
-    int wU_V = edge.weight;
-    if (v.d > u.d + wU_V) {
-      v.d = u.d + wU_V;
+    int w_uv = edge.weight;
+    if (v.d > u.d + w_uv) {
+      v.d = u.d + w_uv;
       v.p = u;
     }
   }
