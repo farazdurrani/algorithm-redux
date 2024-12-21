@@ -51,33 +51,42 @@ public class BellmanFord {
 
   private static boolean bellmanFordAlgorithm(List<Edge> edges, List<Vertex> vertices, Vertex source) {
     // Initialize!
-    for (Vertex v : vertices) {
-      v.d = Integer.MAX_VALUE;
-      v.p = null;
-    }
-    source.d = 0;
+    initialize(vertices, source);
     // algorithm
     for (int i = 0; i < vertices.size() - 1; i++) {
       for (Edge edge : edges) {
         // relaxation part
-        Vertex v = edge.destination;
-        Vertex u = edge.source;
-        if (v.d > u.d + edge.weight) {
-          v.d = u.d + edge.weight;
-          v.p = u;
-        }
+        relax(edge);
       }
     }
     // detect cycles
     for (Edge edge : edges) {
-      Vertex v = edge.destination;
       Vertex u = edge.source;
+      Vertex v = edge.destination;
       if (v.d > u.d + edge.weight) {
         // cycle detected
         return false;
       }
     }
     return true;
+  }
+
+  private static void relax(Edge edge) {
+    Vertex u = edge.source;
+    Vertex v = edge.destination;
+    int wU_V = edge.weight;
+    if (v.d > u.d + wU_V) {
+      v.d = u.d + wU_V;
+      v.p = u;
+    }
+  }
+
+  private static void initialize(List<Vertex> vertices, Vertex source) {
+    for (Vertex v : vertices) {
+      v.d = Integer.MAX_VALUE;
+      v.p = null;
+    }
+    source.d = 0;
   }
 
   private static List<Edge> getWeight() {

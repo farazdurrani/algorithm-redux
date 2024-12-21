@@ -41,11 +41,13 @@ public class PrimsAlgorithm {
   }
 
   private static void primAlgorithm(Map<Vertex, List<Vertex>> graph, Map<Key, Integer> weights, Vertex r) {
+    // initialize
     for (Vertex u : graph.keySet()) {
       u.key = Integer.MAX_VALUE;
       u.p = null;
     }
     r.key = 0;
+    // end of initialize
     PriorityQueue<Vertex> q = new PriorityQueue<>(graph.keySet());
     while (!q.isEmpty()) {
       alphabetSort(q); //this is not part of the algo. Just have it to match the book's tracking.
@@ -53,14 +55,19 @@ public class PrimsAlgorithm {
       System.out.print(u.label + " ");
       for (Vertex v : graph.get(u)) {
         Key key = new Key(u.label, v.label);
-        int wU_V = weights.get(key);
-        if (q.contains(v) && wU_V < v.key) {
-          // since we need to do the decrease key operation, which is not provided by the
+        int wu_v = weights.get(key);
+        if (q.contains(v) && v.key > wu_v) {
+          // Update: There's no way original min-priority-queue would ever expose decrease key to the outside world.
+          // Even if we did, we would not know the index to it. And if we were to find that out, which is easy to
+          // figure out no doubt, the performance of it would be worse than just deleting and adding it back.
+          // Regardless, I implemented a generic min-priority-queue and learned the hard way why decreaseKey
+          // operation is not public.
+          // Original: since we need to do the decrease key operation, which is not provided by the
           // java.util.PriorityQueue library, we resort to and suffice by removing the key and then adding
           // it back with the new decreased value. It does maintain the min-heap property.
           q.remove(v);
           v.p = u;
-          v.key = wU_V;
+          v.key = wu_v;
           q.add(v);
         }
       }
