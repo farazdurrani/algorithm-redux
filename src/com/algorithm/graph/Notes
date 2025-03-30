@@ -1,10 +1,6 @@
-When finding shortest paths, there cannot be negative-weight cycles. 
+* Use Bellman-Ford if there are regular cycles and contains negative weights (this is different than negative-weight cycles.
 
-* Use Bellman-Ford if there are regular cycles and contains 
-negative weights (this is different than negative-weight cycles.
-
-* Use DAG-Shortest-Path if it's a DAG (directed "ACYCLIC" graph) and could
-contains negative weights.
+* Use DAG-Shortest-Path if it's a DAG (directed "ACYCLIC" graph) and could contains negative weights.
 
 * Use Dijkstra if there are regular cycles but no negative weights.
 
@@ -12,16 +8,20 @@ Only Dijkstra is greedy.
 
 ============new===============
 Prim's algo is for non-directed weighted graphs.
+The Minimum Spanning Tree algorithm is used in weighed networks to find the shortest, most efficient way to connect all
+the nodes in a graph: it finds the minimum set of edges that connects all the nodes, without creating any loops or cycles.
 
 breadth-first-search algorithm is a shortest-paths algorithm that works on unweighted graphs.
 
-shortest-paths problems are for acyclic directed weighted graphs. (cannot contain -ve or +ve cycles at all).
-However, shortest-paths graphs can contain negative weights (just weights, no cycles).
-
 Dijkstra’s algorithm assumes that all edge weights in the input graph are non-negative.
-Bellman-Ford algorithm allows negative-weight edges in the input graph.
+Bellman-Ford algorithm allows negative-weight edges in the input graph and so does DAG.
 
 Dijkstra, DAG, and Bellman-Ford algorithms calls INITIALIZE-SINGLE-SOURCE exactly once.
 But Bellman-Ford repeatedly relaxes edges. Relaxation is the only means by which
 shortest-path estimates and predecessors change. Dijkstra and the DAG relax
 each edge exactly once.
+
+The Bellman-Ford algorithm solves the single-source shortest-paths problem in the general case in which edge weights may be negative.
+The Bellman-Ford algorithm returns a boolean value indicating whether or not there is a negative-weight cycle that is reachable from the
+source. If there is a negative cycle, the algorithm indicates that no solution exists. If there is no negative cycle(s), the algorithm produces
+the shortest paths and their weights.

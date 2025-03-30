@@ -29,6 +29,7 @@ public class DijkstraAlgorithm {
       u.p = null;
     }
     source.key = 0;
+    //end initialize
     List<Vertex> list = new ArrayList<>();
     PriorityQueue<Vertex> q = new PriorityQueue<>(graph.keySet());
     while (!q.isEmpty()) {
@@ -38,13 +39,13 @@ public class DijkstraAlgorithm {
         Vertex v = e.destination;
         int w_uv = e.weight;
         // is 'v' part of the heap a.k.a is it visited yet?
-        if (q.contains(v) && v.key > u.key + w_uv) {
-          //this is that min-priority-queue decrease operation replacement.
-          q.remove(v);
+        if (v.key > u.key + w_uv) {
           // relax
           v.key = u.key + w_uv;
           v.p = u;
           // end of relax
+          //This is a min-priority-queue's decreaseKey substitute. Trust me! (Not in terms of performance though).
+          q.remove(v);
           q.add(v);
         }
       }
